@@ -15,20 +15,20 @@ You also need to install LaTeX if you want to generate PDF files from KnitR.
 
 ![](./LaTex.png) http://latex-project.org/ftp.html
 
-###Getting Started - Clone the First Bytes GiT Repository:
+###Getting Started - Clone the RWorkshop GiT Repository:
 
 **Phils-MacBook-Pro:Mine pcannata$ pwd**  
 /Users/pcannata/Mine  
-**Phils-MacBook-Pro:Mine pcannata$ git clone https://github.com/pcannata/FirstBytesRepo.git**  
-Cloning into 'FirstBytesRepo'...  
+**Phils-MacBook-Pro:Mine pcannata$ git clone https://github.com/pcannata/RWorkshop.git**  
+Cloning into 'RWorkshop'...  
 remote: Counting objects: 19, done.  
 remote: Compressing objects: 100% (12/12), done.  
 remote: Total 19 (delta 3), reused 19 (delta 3)  
 Unpacking objects: 100% (19/19), done.  
 Checking connectivity... done  
-**Phils-MacBook-Pro:Mine pcannata$ ls -a FirstBytesRepo/**  
+**Phils-MacBook-Pro:Mine pcannata$ ls -a RWorkshop/**  
 .  		.Rprofile.R		00 Doc			03 ggplot		05 KnitR 02  
-..			.git			01 Basic R		04 KnitR 01		FirstBytesRepo.Rproj  
+..			.git			01 Basic R		04 KnitR 01		RWorkshop.Rproj  
 
 ###Getting Started - Create a New RStudio Project for the code in the cloned repository:
 
@@ -95,7 +95,7 @@ source("../03 ggplot/Plots.R", echo = TRUE)
 source("../03 ggplot/plotFunction.R", echo = TRUE)
 ```
 
-**You should now be able to open FirstBytesRepo/00 Doc/4diamonds.png. It should look like the following plot.**
+**You should now be able to open RWorkshop/00 Doc/4diamonds.png. It should look like the following plot.**
 
 ![](./4diamonds.png) 
 
@@ -108,7 +108,7 @@ See also http://yihui.name/knitr/ and http://kbroman.github.io/knitr_knutshell/
 
 ![](./KnitR.png) 
 
-####A comprehensive KnitR example (which generated this document) can be found in "00 Doc/FirstBytesDoc.Rmd".  
+####A comprehensive KnitR example (which generated this document) can be found in "00 Doc/RWorkshop.Rmd".  
 
 ###slidify
 **You can use Slidify to generate HTML slide decks using only the Rmarkdown language.**  
@@ -129,7 +129,7 @@ See also http://slidify.org and http://slidify.org/start.html
 
 See also http://shiny.rstudio.com and http://shiny.rstudio.com/tutorial 
 
-To run the shiny app that's in the 06Shiny directory run the following in the main FirstBytesRepo directory (make sure the working directory is set to this directory):  
+To run the shiny app that's in the 06Shiny directory run the following in the main RWorkshop directory (make sure the working directory is set to this directory):  
 library(shiny)  
 runApp("06Shiny")   # Make sure there are no spaces in the string argument to runAPP
 
