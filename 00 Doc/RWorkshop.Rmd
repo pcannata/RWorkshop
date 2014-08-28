@@ -38,7 +38,20 @@ Checking connectivity... done
 
 ![](./NewProject3.png)  
 
-![](./NewProject4.png)  
+![](./NewProject4.png)    
+
+###Getting Started - Create .Rprofile file to load ggplot and gplot libraries when the project is started: 
+
+![](./Rprofile.png) 
+
+Create an new file named .Rprofile by copying a file, see below 
+
+![](./Rprofile1.png) 
+
+Copy what's in blue above into a new file named .Rprofile as below, 
+
+![](./Rprofile2.png) 
+
 
 ###Recommended Books:
 
