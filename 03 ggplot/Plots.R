@@ -1,4 +1,21 @@
-library("ggplot2", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/library")
+library("ggplot2")
+options(java.parameters="-Xmx2g")
+library(rJava)
+library(RJDBC)
+
+jdbcDriver <- JDBC(driverClass="oracle.jdbc.OracleDriver", classPath="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/ojdbc6.jar")
+
+# In the following, use your username and password instead of "CS347_prof", "orcl_prof" once you have an Oracle account
+possibleError <- tryCatch(
+  jdbcConnection <- dbConnect(jdbcDriver, "jdbc:oracle:thin:@zenji.microlab.cs.utexas.edu:1521:orcl", "C##cs347_prof", "orcl_prof"),
+  error=function(e) e
+)
+if(!inherits(possibleError, "error")){
+  diamonds <- dbGetQuery(jdbcConnection, "select * from diamonds")
+  dbDisconnect(jdbcConnection)
+}
+head(diamonds)
+
 ggplot(data = diamonds) + geom_histogram(aes(x = carat))
 ggplot(data = diamonds) + geom_density(aes(x = carat, fill = "gray50"))
 ggplot(diamonds, aes(x = carat, y = price)) + geom_point()

@@ -21,17 +21,27 @@ library(RJDBC)
 
 jdbcDriver <- JDBC(driverClass="oracle.jdbc.OracleDriver", classPath="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/ojdbc6.jar")
 
-# In the following, use your username and password instead of "CS347_prof", "orcl_prof"
-jdbcConnection <- dbConnect(jdbcDriver, "jdbc:oracle:thin:@rising-sun.microlab.cs.utexas.edu:1521:orcl", "CS347_prof", "orcl_prof")
+# The following data.frame will be used as the default if emps can't be loaded from Oracle.
+e1 <- 7369
+e2 <- 'SMITH'
+e3 <- 'CLERK'
+e4 <- 7902
+e5 <- '17-DEC-1980'
+e6 <- 800
+e7 <- 20
+emps <- data.frame(e1,e2,e3,e4,e5,e6,e7)
+col_headings <- c('EMPNO', 'ENAME', 'JOB', 'MGR', 'HIREDATE', 'SAL', 'DEPTNO')
+names(emps) <- col_headings
 
-instanceName <- dbGetQuery(jdbcConnection, "SELECT instance_name FROM v$instance")
-print(instanceName)
+possibleError <- tryCatch(
+  # In the following, use your username and password instead of "CS347_prof", "orcl_prof"
+  jdbcConnection <- dbConnect(jdbcDriver, "jdbc:oracle:thin:@zenji.microlab.cs.utexas.edu:1521:orcl", "C##cs347_prof", "orcl_prof"),
+  error=function(e) e
+)
+if(!inherits(possibleError, "error")){
+  emps <- dbGetQuery(jdbcConnection, "select * from emp")
+  dbDisconnect(jdbcConnection)
+}
 
-# Get data from the emp table into a dataframe named emps
-emps <- dbGetQuery(jdbcConnection, "select * from emp")
-# Histogram the SAL variable in emps using ggplot2 (ggplot2 will be discussed in the next section).
 ggplot(data = emps) + geom_histogram(aes(x = SAL))
-
-dbDisconnect(jdbcConnection)
-
 

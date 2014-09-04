@@ -1,5 +1,5 @@
 
-library("ggplot2", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/library")
+library("ggplot2")
 "Displaying the top few rows of a dataframe:"
 head(diamonds)
 "Selecting a subset of columns from a dataframe:"
